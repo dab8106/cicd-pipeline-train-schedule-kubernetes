@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
-        DOCKER_IMAGE_NAME = "willbla/train-schedule"
+        DOCKER_IMAGE_NAME = "dab8106/train-schedule"
     }
     stages {
         stage('Build') {
@@ -18,7 +18,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build(dab8106/trainschedule)
+                    app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
                         sh 'echo Hello, World!'
                     }
