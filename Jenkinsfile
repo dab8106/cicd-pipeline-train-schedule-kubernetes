@@ -45,11 +45,8 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.yml',
-                    enableConfigSubstitution: true
-                )
+                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://52.142.23.102']) {
+                    sh 'kubectl apply -f train-schedule-kube.yml'
             }
         }
     }
