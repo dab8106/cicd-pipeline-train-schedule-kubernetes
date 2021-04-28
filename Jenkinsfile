@@ -45,7 +45,7 @@ pipeline {
             steps {
                 input 'Deploy to Production?'
                 milestone(1)
-                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://52.142.23.102']) {
+                withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'aks28042021-dns-db1d8bf5.hcp.eastus.azmk8s.io']) {
                     sh 'kubectl apply -f train-schedule-kube.yml'
                 }
             }
