@@ -47,6 +47,7 @@ pipeline {
                 milestone(1)
                 withKubeConfig([credentialsId: 'kubeconfig', serverUrl: 'https://52.142.23.102']) {
                     sh 'kubectl apply -f train-schedule-kube.yml'
+                }
             }
         }
     }
